@@ -11,7 +11,7 @@ jobs:
     steps:
       - script: |
           docker login \
-          --username $(ACTIVE_REGISTRY_USER)
+          --username $(ACTIVE_REGISTRY_USER) \
           --password $(ACTIVE_REGISTRY_PASSWORD) jfrog.cicd.nonamesec.com/noname-docker-release
         displayName: Noname Active-cli Docker login
 
