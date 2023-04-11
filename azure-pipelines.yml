@@ -1,19 +1,38 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# Azure DevOps CICD Build pipeline with Noname Security Active Testing v2 shift left API Security QA Test integration
 
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
+jobs:
+  - job: Noname_scanner
+    displayName: 'Run Noname Active Scanner'
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+      - script: |
+          docker login \
+          --username <active-testing-username> \ # change this to your active testing username
+          --password $(ACTIVE_REGISTRY_PASSWORD) jfrog.cicd.nonamesec.com/noname-docker-release
+        displayName: Noname Active-cli Docker login
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+      - script: |
+          docker run \
+          --pull always \
+          jfrog.cicd.nonamesec.com/noname-docker-release/active-cli:$(curl -k ${ACTIVE_API_URL}/backend/version) \
+          scan \
+          --api-url=$(ACTIVE_API_URL) \
+          --api-token=$(ACTIVE_API_TOKEN) \
+          --test-suite-id=$(ACTIVE_TEST_SUITE_ID) \
+          --severity-threshold=$(ACTIVE_SEVERITY_THRESHOLD) \
+          --base-url=$(ACTIVE_BASE_URL)
+        displayName: 'run Noname active Scanner'
+  
+  - job: Deploy_API 
+    displayName: 'Deploy API'
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+      - script: echo Hello API Builders!
+        displayName: 'Hello API Builders'
+      - script: startapiserver.sh
+        displayName: 'Start the API Server if the test cases pass in the QA Test environment'
