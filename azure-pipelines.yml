@@ -11,7 +11,7 @@ jobs:
     steps:
       - script: |
           docker login \
-          --username <active-testing-username> \ # change this to your active testing username
+          --username $(ACTIVE_REGISTRY_USER)
           --password $(ACTIVE_REGISTRY_PASSWORD) jfrog.cicd.nonamesec.com/noname-docker-release
         displayName: Noname Active-cli Docker login
 
@@ -22,9 +22,8 @@ jobs:
           scan \
           --api-url=$(ACTIVE_API_URL) \
           --api-token=$(ACTIVE_API_TOKEN) \
-          --test-suite-id=$(ACTIVE_TEST_SUITE_ID) \
           --severity-threshold=$(ACTIVE_SEVERITY_THRESHOLD) \
-          --base-url=$(ACTIVE_BASE_URL)
+          --test-group-id=$(ACTIVE_APP_ID)
         displayName: 'run Noname active Scanner'
   
   - job: Deploy_API 
