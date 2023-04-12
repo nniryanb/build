@@ -1,5 +1,5 @@
 # Azure DevOps CICD Build pipeline with Noname Security Active Testing v2 shift left API Security QA Test integration
-#
+# Author @iryanb noname security 2023 All Rights Reserved. Created for Microsoft //build/ May 2023 demonstration purposes 
 # configuration file to use to scan via an Azure API Manager Gateway 
 # https://raw.githubusercontent.com/nniryanb/build/main/active-apimconfig.json
 #
