@@ -5,7 +5,7 @@
     "version": "1.0",
     "description": "An unofficial OpenAPI definition for [httpbin.org](https://httpbin.org)."
   },
-  "host": "host.docker.internal",
+  "host": "localhost",
   "basePath": "/",
   "schemes": [
     "http"
