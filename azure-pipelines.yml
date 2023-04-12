@@ -28,7 +28,7 @@ jobs:
           --api-token=$(ACTIVE_API_TOKEN) \
           --branch-name=$(branch-name) \
           --severity-threshold=$(ACTIVE_SEVERITY_THRESHOLD) \
-          --test-group-id=$(ACTIVE_APP_ID) 
+          --test-group-id=$(test-group-id) 
         displayName: 'run Noname active Scanner'
   
   - job: Deploy_API 
