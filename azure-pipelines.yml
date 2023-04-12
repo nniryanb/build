@@ -24,7 +24,7 @@ jobs:
       - script: |
           docker run \
           --add-host=host.docker.internal:host-gateway \
-          -e ACTIVE_CONFIG_FILE_PATH=https://raw.githubusercontent.com/nniryanb/build/main/active-apimconfig.json \
+          -e ACTIVE_CONFIG_FILE_PATH=https://raw.githubusercontent.com/nniryanb/build/main/active-config.json \
           -v $(pwd)/noname:/noname \
           -v $(pwd)/openapi_specs:/openapi_specs \
           --pull always \
