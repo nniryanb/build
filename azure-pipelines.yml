@@ -37,7 +37,7 @@ jobs:
     pool:
       vmImage: ubuntu-latest
     steps:
-      - script: echo Hello API Builders!
-        displayName: 'Hello API Builders'
+      - script: echo Now you may //build/ the API server in Production fellow Nonamers!
+        displayName: 'Hello API Builders and Nonamers'
       - script: echo Deploy API server to production if test cases pass
         displayName: 'Deploy API server to production if test cases pass'
