@@ -4,19 +4,8 @@ trigger:
 - main
 
 jobs:
-  - job: Start_API 
-    displayName: 'Start API'
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-      - script: echo Hello API Builders and Nonamers!
-        displayName: 'Hello API Builders and Nonamers'
-      - script: docker run --add-host=api.docker.internal:host-gateway -d -p 80:80 simonkowallik/httpbin-alpine
-        displayName: 'Start API server to scan'
-
   - job: Noname_scanner
     displayName: 'Run Noname Active Scanner'
-    dependsOn: Start_API
     pool:
       vmImage: ubuntu-latest
     steps:
