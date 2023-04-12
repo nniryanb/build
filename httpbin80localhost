@@ -1,0 +1,751 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "httpbin",
+    "version": "1.0",
+    "description": "An unofficial OpenAPI definition for [httpbin.org](https://httpbin.org)."
+  },
+  "host": "host.docker.internal",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "apiKeyHeader": {
+      "type": "apiKey",
+      "name": "Ocp-Apim-Subscription-Key",
+      "in": "header"
+    },
+    "apiKeyQuery": {
+      "type": "apiKey",
+      "name": "subscription-key",
+      "in": "query"
+    }
+  },
+  "security": [
+    {
+      "apiKeyHeader": []
+    },
+    {
+      "apiKeyQuery": []
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "The current time, in a variety of formats",
+        "operationId": "get",
+        "summary": "The current time, in a variety of formats",
+        "tags": [
+          "time"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Get200ApplicationJsonResponse"
+            },
+            "examples": {
+              "application/json": {
+                "now": {
+                  "epoch": 1485183550.84644,
+                  "slang_date": "2021-01-23T00:00:00+00:00",
+                  "slang_time": "4 months ago",
+                  "iso8601": "2017-01-23T14:59:10.84644+00:00",
+                  "rfc2822": "2017-01-23T14:59:10+00:00",
+                  "rfc3339": "2017-01-23T14:59:10.84+00:00"
+                },
+                "urls": [
+                  "/",
+                  "/docs",
+                  "/when/:human-timestamp",
+                  "/parse/:machine-timestamp"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get": {
+      "get": {
+        "description": "Returns the GET request's data. Accepts any query parameters and any headers.\n",
+        "operationId": "get-get",
+        "summary": "Returns the GET request's data. Accepts any query parameters and any headers.\n",
+        "tags": [
+          "HTTP methods"
+        ],
+        "parameters": [
+          {
+            "name": "freeform",
+            "in": "query",
+            "description": "Enter free-form query parameters in the JSON format `{ \"param1\": \"value1\", \"param2\": \"value2\", ... }`.\n\nNote that the parameters will be actually sent as `?param1=value1&param2=value2&...`\n",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetGet200ApplicationJsonResponse"
+            },
+            "examples": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/delete": {
+      "delete": {
+        "description": "Returns the DELETE request's data. Accepts any query parameters and any headers.\n",
+        "operationId": "delete-delete",
+        "summary": "Returns the DELETE request's data. Accepts any query parameters and any headers.\n",
+        "tags": [
+          "HTTP methods"
+        ],
+        "parameters": [
+          {
+            "name": "freeform",
+            "in": "query",
+            "description": "Enter free-form query parameters in the JSON format `{ \"param1\": \"value1\", \"param2\": \"value2\", ... }`.\n\nNote that the parameters will be actually sent as `?param1=value1&param2=value2&...`\n",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/post": {
+      "post": {
+        "description": "Returns the POSTed data",
+        "operationId": "post-post",
+        "summary": "Returns the POSTed data",
+        "tags": [
+          "HTTP methods"
+        ],
+        "parameters": [
+          {
+            "name": "postPostRequest",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/PostPostRequest"
+            },
+            "description": "Data provided in the request body will be returned in the response."
+          }
+        ],
+        "consumes": [
+          "application/json",
+          "application/vnd+json",
+          "application/xml",
+          "text/plain",
+          "application/x-www-form-urlencoded",
+          "*/*"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse"
+            }
+          }
+        }
+      }
+    },
+    "/ip": {
+      "get": {
+        "description": "Returns Origin IP.",
+        "operationId": "get-ip",
+        "summary": "Returns Origin IP.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/IpGet200ApplicationJsonResponse"
+            },
+            "examples": {
+              "application/json": {
+                "origin": "10.100.10.10"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user-agent": {
+      "get": {
+        "description": "Returns the user agent.",
+        "operationId": "get-user-agent",
+        "summary": "Returns the user agent.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User-agentGet200ApplicationJsonResponse"
+            },
+            "examples": {
+              "application/json": {
+                "user-agent": "curl/7.37.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/headers": {
+      "get": {
+        "description": "Returns the request headers.",
+        "operationId": "get-headers",
+        "summary": "Returns the request headers.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/HeadersGet200ApplicationJsonResponse"
+            },
+            "examples": {
+              "application/json": {
+                "headers": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/delay/{n}": {
+      "get": {
+        "description": "Delays responding for min(n, 10) seconds.",
+        "operationId": "get-delay-n",
+        "summary": "Delays responding for min(n, 10) seconds.",
+        "parameters": [
+          {
+            "name": "n",
+            "in": "path",
+            "description": "Response delay, in seconds.",
+            "required": true,
+            "type": "integer",
+            "maximum": 10,
+            "minimum": 0
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/hidden-basic-auth/{user}/{password}": {
+      "get": {
+        "description": "Returns 404 Not Found unless the request is authenticated.",
+        "operationId": "get-hidden-basic-auth-user-password",
+        "summary": "Hidden Basic authentication",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "path",
+            "description": "Username. Use the same username in the path AND for authorization.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "path",
+            "description": "Password. Use the same password in the path AND for authorization.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/200BasicAuthResponse-json"
+            },
+            "examples": {
+              "application/json": {
+                "authenticated": true,
+                "user": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "Unautorized (the username and password used for Basic auth do not match those in the URL path.)"
+          }
+        }
+      }
+    },
+    "/xml": {
+      "get": {
+        "description": "Returns some XML.",
+        "operationId": "get-xml",
+        "summary": "Returns some XML.",
+        "produces": [
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/html": {
+      "get": {
+        "description": "Returns an HTML page",
+        "operationId": "get-html",
+        "summary": "Returns an HTML page",
+        "produces": [
+          "text/html"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/image/{format}": {
+      "get": {
+        "description": "Returns an image with the specified format.",
+        "operationId": "get-image-format",
+        "summary": "Returns an image with the specified format.",
+        "tags": [
+          "images"
+        ],
+        "parameters": [
+          {
+            "name": "format",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "png",
+              "jpeg",
+              "webp",
+              "svg"
+            ]
+          }
+        ],
+        "produces": [
+          "image/png, image/jpeg, image/webp",
+          "image/svg+xml",
+          "image/svg"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ImageResponse-png-image"
+            }
+          }
+        }
+      }
+    },
+    "/image": {
+      "get": {
+        "description": "Returns an image based on the Accept header.",
+        "operationId": "get-image",
+        "summary": "Returns an image based on the Accept header.",
+        "tags": [
+          "images"
+        ],
+        "produces": [
+          "image/png, image/jpeg, image/webp",
+          "image/svg+xml",
+          "image/svg"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ImageResponse-png-image"
+            }
+          },
+          "406": {
+            "description": "Client did not request a supported media type."
+          }
+        }
+      }
+    },
+    "/cache": {
+      "get": {
+        "description": "Returns 200 unless an If-Modified-Since or If-None-Match header is provided, when it returns a 304.",
+        "operationId": "get-cache",
+        "summary": "Returns 200 unless an If-Modified-Since or If-None-Match header is provided, when it returns a 304.",
+        "parameters": [
+          {
+            "name": "If-Modified-Since",
+            "in": "header",
+            "description": "For testing purposes this header accepts any value. (???) See also https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Since\n",
+            "type": "string"
+          },
+          {
+            "name": "If-None-Match",
+            "in": "header",
+            "description": "For testing purposes this header accepts any value. (???) See also https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match\n",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Neigher If-Modified-Since nor If-None-Match header is provided"
+          },
+          "304": {
+            "description": "If-Modified-Since or If-None-Match header is provided"
+          }
+        }
+      }
+    },
+    "/cookies": {
+      "get": {
+        "description": "Returns cookie data",
+        "operationId": "get-cookies",
+        "summary": "Returns cookie data",
+        "tags": [
+          "Cookies"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/cookies/set": {
+      "get": {
+        "description": "Sets one or more simple cookies",
+        "operationId": "get-cookies-set",
+        "summary": "Sets one or more simple cookies",
+        "tags": [
+          "Cookies"
+        ],
+        "parameters": [
+          {
+            "name": "freeform",
+            "in": "query",
+            "description": "Enter free-form query parameters in the JSON format `{ \"param1\": \"value1\", \"param2\": \"value2\", ... }`.\n\nNote that the parameters will be actually sent as `?param1=value1&param2=value2&...`\n",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/cookies/delete": {
+      "get": {
+        "description": "Delete one or more simple cookies",
+        "operationId": "get-cookies-delete",
+        "summary": "Delete one or more simple cookies",
+        "tags": [
+          "Cookies"
+        ],
+        "parameters": [
+          {
+            "name": "freeform",
+            "in": "query",
+            "description": "Enter free-form query parameters in the JSON format `{ \"param1\": \"value1\", \"param2\": \"value2\", ... }`.\n\nNote that the parameters will be actually sent as `?param1=value1&param2=value2&...`\n",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CommonResponse": {
+      "description": "Response returned by `/get`",
+      "required": [
+        "args",
+        "headers",
+        "origin",
+        "url"
+      ],
+      "type": "object",
+      "properties": {
+        "args": {
+          "description": "Query string parameters specified in the request URL.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "headers": {
+          "description": "Headers (standard or custom) used in the request. Some typical headers are:\n  - Accept\n  - Accept-Encoding\n  - Content-Length\n  - Content-Type\n  - Host\n  - Origin\n  - Referred\n  - User-Agent\n",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "origin": {
+          "description": "The origin IP from which the request was made.",
+          "type": "string",
+          "example": "10.100.10.10, 10.100.10.44, 52.91.14.13"
+        },
+        "url": {
+          "format": "uri",
+          "description": "The endpoint URL to which the request was made.",
+          "type": "string",
+          "example": "https://httpbin.org/post"
+        }
+      }
+    },
+    "PostResponse": {
+      "description": "Response returned by /post, /put, /patch and /delete",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "data": {},
+            "files": {},
+            "form": {
+              "description": "Form parameters specified in \"application/x-www-form-urlencoded\" and `multipart/form-data` requests.\n",
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "json": {
+              "description": "JSON value sent in the payload. Can be object, array, string, number, boolean or `null`.\n"
+            }
+          }
+        }
+      ]
+    },
+    "TimestampWrapper": {
+      "required": [
+        "timestamp"
+      ],
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "$ref": "#/definitions/Timestamp"
+        }
+      }
+    },
+    "Timestamp": {
+      "required": [
+        "epoch",
+        "slang_date",
+        "slang_time",
+        "iso8601",
+        "rfc2822",
+        "rfc3339"
+      ],
+      "type": "object",
+      "properties": {
+        "epoch": {
+          "format": "double",
+          "type": "number",
+          "example": 1498229228.06717
+        },
+        "slang_date": {
+          "type": "string",
+          "example": "today"
+        },
+        "slang_time": {
+          "type": "string",
+          "example": "now"
+        },
+        "iso8601": {
+          "type": "string",
+          "example": "2017-06-23T14:47:08.067166Z"
+        },
+        "rfc2822": {
+          "type": "string",
+          "example": "Fri, 23 Jun 2017 14:47:08 GMT"
+        },
+        "rfc3339": {
+          "type": "string",
+          "example": "2017-06-23T14:47:08.06Z"
+        }
+      },
+      "example": {
+        "epoch": 1485183550.84644,
+        "slang_date": "Jan 23",
+        "slang_time": "4 months ago",
+        "iso8601": "2017-01-23T14:59:10.84644Z",
+        "rfc2822": "Mon, 23 Jan 2017 14:59:10 GMT",
+        "rfc3339": "2017-01-23T14:59:10.84Z"
+      }
+    },
+    "Get200ApplicationJsonResponse": {
+      "required": [
+        "now",
+        "urls"
+      ],
+      "type": "object",
+      "properties": {
+        "now": {
+          "$ref": "#/definitions/Timestamp"
+        },
+        "urls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "/",
+            "/docs",
+            "/when/:human-timestamp",
+            "/parse/:machine-timestamp"
+          ]
+        }
+      }
+    },
+    "GetGet200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "PostPostRequest": {
+      "example": {
+        "message": "Hello, world!"
+      }
+    },
+    "PostPostRequest-1": {},
+    "PostPostRequest-2": {
+      "type": "object"
+    },
+    "PostPostRequest-3": {
+      "type": "string",
+      "example": "Hi there"
+    },
+    "PostPostRequest-4": {},
+    "IpGet200ApplicationJsonResponse": {
+      "required": [
+        "origin"
+      ],
+      "type": "object",
+      "properties": {
+        "origin": {
+          "description": "The IP address, or a comma-separated list of IP addresses. For example, \"10.100.10.10, 10.100.20.254, 52.91.14.13\"'\n",
+          "type": "string",
+          "example": "10.100.10.10"
+        }
+      }
+    },
+    "User-agentGet200ApplicationJsonResponse": {
+      "required": [
+        "user-agent"
+      ],
+      "type": "object",
+      "properties": {
+        "user-agent": {
+          "type": "string",
+          "example": "curl/7.37.0"
+        }
+      }
+    },
+    "HeadersGet200ApplicationJsonResponse": {
+      "required": [
+        "headers"
+      ],
+      "type": "object",
+      "properties": {
+        "headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "BearerGet200ApplicationJsonResponse": {
+      "type": "object",
+      "properties": {
+        "authenticated": {
+          "type": "boolean",
+          "example": true
+        },
+        "token": {
+          "description": "Bearer token specified in the request",
+          "type": "string"
+        }
+      }
+    },
+    "200BasicAuthResponse-json": {
+      "type": "object",
+      "properties": {
+        "authenticated": {
+          "type": "boolean",
+          "example": true
+        },
+        "user": {
+          "description": "The user name specified in the request.",
+          "type": "string"
+        }
+      }
+    },
+    "ImageResponse-png-image": {
+      "format": "binary",
+      "type": "string"
+    },
+    "TimestampResponseResponse-json": {
+      "required": [
+        "timestamp"
+      ],
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "$ref": "#/definitions/Timestamp"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "auth",
+      "description": "Operations for testing various authentication types"
+    },
+    {
+      "name": "HTTP methods",
+      "description": "Operations for testing different HTTP methods"
+    },
+    {
+      "name": "Status codes",
+      "description": "Return the specified HTTP status code, or a random status code if more than one are given "
+    }
+  ],
+  "x-ms-export-notes": [
+    "Operation 'Returns the POSTed data' has both - body parameters and formData parameters which is not allowed by Swagger. So, only body parameters are exported."
+  ]
+}
