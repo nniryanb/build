@@ -19,7 +19,7 @@
           "name": "header",
           "header": {
             "key": "Ocp-Apim-Subscription-Key",
-            "value": "1fea02a896684806b1ea64470bb2fdcf-incorrectkeyonpurpose"
+            "value": "1fea02a896684806b1ea64470bb2fdcf"
           }
         }
       ]
