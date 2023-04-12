@@ -11,7 +11,7 @@ jobs:
     steps:
       - script: echo Hello API Builders and Nonamers!
         displayName: 'Hello API Builders and Nonamers'
-      - script: docker run -d -p 80:80 simonkowallik/httpbin-alpine
+      - script: docker run --add-host=api.docker.internal:localhost -d -p 80:80 simonkowallik/httpbin-alpine
         displayName: 'Start API server to scan'
 
   - job: Noname_scanner
