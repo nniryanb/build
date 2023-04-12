@@ -1,12 +1,12 @@
 {
   "version": "1.0.0",
   "applicationId": "cd50b986-b82e-4749-b523-d0ba0b918ffd",
-  "host": "http://api.docker.internal",
+  "host": "http://buildapi.westus3.cloudapp.azure.com",
   "sources": [
     {
       "name": "httpbin",
       "openApi": {
-        "sourcePath": "https://raw.githubusercontent.com/nniryanb/build/main/httpbin80localhost.json"
+        "sourcePath": "https://raw.githubusercontent.com/nniryanb/build/main/httpbin80build.json"
       }
     }
   ],
