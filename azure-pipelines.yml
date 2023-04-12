@@ -4,8 +4,19 @@ trigger:
 - main
 
 jobs:
+  - job: Start_API_server
+    displayName: 'Start API server to scan'
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+      - script: echo Hello API Builders and Nonamers!
+        displayName: 'Hello API Builders and Nonamers'
+      - script: docker run -d -p 80:80 simonkowallik/httpbin-alpine
+        displayName: 'Start the API Server'
+
   - job: Noname_scanner
     displayName: 'Run Noname Active Scanner'
+    dependsOn: Start_API_server
     pool:
       vmImage: ubuntu-latest
     steps:
@@ -39,5 +50,5 @@ jobs:
     steps:
       - script: echo Hello API Builders!
         displayName: 'Hello API Builders'
-      - script: docker run -d -p 80:80 simonkowallik/httpbin-alpine
-        displayName: 'Start the API Server if the test cases pass in the QA Test environment'
+      - script: echo Deploy API server to production if test cases pass
+        displayName: 'Deploy API server to production if test cases pass'
