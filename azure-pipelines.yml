@@ -17,6 +17,10 @@ jobs:
 
       - script: |
           docker run \
+          --add-host=host.docker.internal:host-gateway \
+          -e ACTIVE_CONFIG_FILE_PATH=active-config.json \
+          -v $(pwd)/noname:/noname \
+          -v $(pwd)/openapi_specs:/openapi_specs \
           --pull always \
           jfrog.cicd.nonamesec.com/noname-docker-release/active-cli:$(curl -k ${ACTIVE_API_URL}/backend/version) \
           scan \
