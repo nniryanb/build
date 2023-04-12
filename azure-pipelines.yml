@@ -18,7 +18,7 @@ jobs:
       - script: |
           docker run \
           --add-host=host.docker.internal:host-gateway \
-          -e ACTIVE_CONFIG_FILE_PATH=active-config.json \
+          -e ACTIVE_CONFIG_FILE_PATH=https://github.com/nniryanb/build/blob/main/active-config.json \
           -v $(pwd)/noname:/noname \
           -v $(pwd)/openapi_specs:/openapi_specs \
           --pull always \
@@ -33,6 +33,7 @@ jobs:
   
   - job: Deploy_API 
     displayName: 'Deploy API'
+    dependsOn: Noname_scanner
     pool:
       vmImage: ubuntu-latest
     steps:
