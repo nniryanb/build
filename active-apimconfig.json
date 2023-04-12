@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "applicationId": "cd50b986-b82e-4749-b523-d0ba0b918ffd",
+  "host": "https://nnpov005.azure-api.net/httpbin4build",
+  "sources": [
+    {
+      "name": "httpbin4buildAzureAPIM",
+      "openApi": {
+        "sourceUrl": "https://raw.githubusercontent.com/nniryanb/build/main/httpbin%20build%20Azure.openapi%2Bjson.json"
+      }
+    }
+  ],
+  "auths": [
+    {
+      "name": "Ocp-Apim-Subscription-Key",
+      "role": "reader",
+      "secrets": [
+        {
+          "name": "header",
+          "header": {
+            "key": "Ocp-Apim-Subscription-Key",
+            "value": "1fea02a896684806b1ea64470bb2fdcf"
+          }
+        }
+      ]
+    }
+  ]
+}
