@@ -6,7 +6,7 @@
     {
       "name": "httpbin",
       "openApi": {
-        "sourcePath": "httpbin80build.json"
+        "sourcePath": "https://raw.githubusercontent.com/nniryanb/build/main/httpbin80build.json"
       }
     }
   ],
