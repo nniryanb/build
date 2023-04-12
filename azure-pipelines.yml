@@ -1,4 +1,10 @@
 # Azure DevOps CICD Build pipeline with Noname Security Active Testing v2 shift left API Security QA Test integration
+#
+# configuration file to use to scan via an Azure API Manager Gateway 
+# https://raw.githubusercontent.com/nniryanb/build/main/active-apimconfig.json
+#
+# configuration file to use to scan the api without an Azure API Manager Gateway
+# -e ACTIVE_CONFIG_FILE_PATH=https://raw.githubusercontent.com/nniryanb/build/main/active-config.json
 
 trigger:
 - main
@@ -18,7 +24,7 @@ jobs:
       - script: |
           docker run \
           --add-host=host.docker.internal:host-gateway \
-          -e ACTIVE_CONFIG_FILE_PATH=https://raw.githubusercontent.com/nniryanb/build/main/active-config.json \
+          -e ACTIVE_CONFIG_FILE_PATH=https://raw.githubusercontent.com/nniryanb/build/main/active-apimconfig.json \
           -v $(pwd)/noname:/noname \
           -v $(pwd)/openapi_specs:/openapi_specs \
           --pull always \
