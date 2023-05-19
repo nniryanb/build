@@ -35,7 +35,7 @@ jobs:
           --branch-name=$(branch-name) \
           --severity-threshold=$(ACTIVE_SEVERITY_THRESHOLD) \
           --test-group-id=$(test-group-id) 
-        displayName: 'run Noname active Scanner'
+        displayName: 'run Noname Active Scanner'
   
   - job: Deploy_API 
     displayName: 'Deploy API'
