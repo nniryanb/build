@@ -11,44 +11,6 @@
         }
     ],
     "paths": {
-        "/": {
-            "get": {
-                "tags": [
-                    "time"
-                ],
-                "summary": "The current time, in a variety of formats",
-                "description": "The current time, in a variety of formats",
-                "operationId": "get",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Get200ApplicationJsonResponse"
-                                },
-                                "example": {
-                                    "now": {
-                                        "epoch": 1485183550.84644,
-                                        "slang_date": "2021-01-23T00:00:00.0000000+00:00",
-                                        "slang_time": "4 months ago",
-                                        "iso8601": "2017-01-23T14:59:10.8464400+00:00",
-                                        "rfc2822": "2017-01-23T14:59:10.0000000+00:00",
-                                        "rfc3339": "2017-01-23T14:59:10.8400000+00:00"
-                                    },
-                                    "urls": [
-                                        "/",
-                                        "/docs",
-                                        "/when/:human-timestamp",
-                                        "/parse/:machine-timestamp"
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/get": {
             "get": {
                 "tags": [
@@ -180,28 +142,6 @@
                 }
             }
         },
-        "/ip": {
-            "get": {
-                "summary": "Returns Origin IP.",
-                "description": "Returns Origin IP.",
-                "operationId": "get-ip",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/IpGet200ApplicationJsonResponse"
-                                },
-                                "example": {
-                                    "origin": "10.100.10.10"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/user-agent": {
             "get": {
                 "summary": "Returns the user agent.",
@@ -241,86 +181,6 @@
                                     "headers": {}
                                 }
                             }
-                        }
-                    }
-                }
-            }
-        },
-        "/delay/{n}": {
-            "get": {
-                "summary": "Delays responding for min(n, 10) seconds.",
-                "description": "Delays responding for min(n, 10) seconds.",
-                "operationId": "get-delay-n",
-                "parameters": [
-                    {
-                        "name": "n",
-                        "in": "path",
-                        "description": "Response delay, in seconds.",
-                        "required": true,
-                        "schema": {
-                            "maximum": 10,
-                            "minimum": 0,
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {}
-                        }
-                    }
-                }
-            }
-        },
-        "/hidden-basic-auth/{user}/{password}": {
-            "get": {
-                "tags": [
-                    "auth"
-                ],
-                "summary": "Hidden Basic authentication",
-                "description": "Returns 404 Not Found unless the request is authenticated.",
-                "operationId": "get-hidden-basic-auth-user-password",
-                "parameters": [
-                    {
-                        "name": "user",
-                        "in": "path",
-                        "description": "Username. Use the same username in the path AND for authorization.",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "password",
-                        "in": "path",
-                        "description": "Password. Use the same password in the path AND for authorization.",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/200BasicAuthResponse-json"
-                                },
-                                "example": {
-                                    "authenticated": true,
-                                    "user": "string"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Unautorized (the username and password used for Basic auth do not match those in the URL path.)",
-                        "content": {
-                            "application/json": {}
                         }
                     }
                 }
@@ -495,21 +355,6 @@
                     },
                     "304": {
                         "description": "If-Modified-Since or If-None-Match header is provided"
-                    }
-                }
-            }
-        },
-        "/cookies": {
-            "get": {
-                "tags": [
-                    "Cookies"
-                ],
-                "summary": "Returns cookie data",
-                "description": "Returns cookie data",
-                "operationId": "get-cookies",
-                "responses": {
-                    "200": {
-                        "description": "OK"
                     }
                 }
             }
