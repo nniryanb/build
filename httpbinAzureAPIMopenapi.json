@@ -358,56 +358,6 @@
                     }
                 }
             }
-        },
-        "/cookies/set": {
-            "get": {
-                "tags": [
-                    "Cookies"
-                ],
-                "summary": "Sets one or more simple cookies",
-                "description": "Sets one or more simple cookies",
-                "operationId": "get-cookies-set",
-                "parameters": [
-                    {
-                        "name": "freeform",
-                        "in": "query",
-                        "description": "Enter free-form query parameters in the JSON format `{ \"param1\": \"value1\", \"param2\": \"value2\", ... }`.\n\nNote that the parameters will be actually sent as `?param1=value1&param2=value2&...`\n",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "/cookies/delete": {
-            "get": {
-                "tags": [
-                    "Cookies"
-                ],
-                "summary": "Delete one or more simple cookies",
-                "description": "Delete one or more simple cookies",
-                "operationId": "get-cookies-delete",
-                "parameters": [
-                    {
-                        "name": "freeform",
-                        "in": "query",
-                        "description": "Enter free-form query parameters in the JSON format `{ \"param1\": \"value1\", \"param2\": \"value2\", ... }`.\n\nNote that the parameters will be actually sent as `?param1=value1&param2=value2&...`\n",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
         }
     },
     "components": {
