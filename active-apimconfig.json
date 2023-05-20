@@ -6,7 +6,7 @@
     {
       "name": "httpbin4buildAzureAPIM",
       "openApi": {
-        "sourceUrl": "https://raw.githubusercontent.com/nniryanb/build/main/httpbin%20build%20Azure.openapi%2Bjson.json"
+        "sourceUrl": "https://raw.githubusercontent.com/nniryanb/build/main/httpbinAzureAPIMopenapi.json"
       }
     }
   ],
